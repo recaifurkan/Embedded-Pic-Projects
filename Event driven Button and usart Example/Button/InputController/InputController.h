@@ -13,8 +13,14 @@
  */
 #ifndef INPUTCONTROLLER_H
 #define	INPUTCONTROLLER_H
-#include <stdint.h>
+
+
+#include "../../usart/Usart.h"
 #include "../Button/Button.h"
+
+
+
+
 
 /*
  bu s?n?f bütün inputlar? içinde bar?nd?r?r
@@ -23,11 +29,22 @@
  */
 
 typedef struct {
-    uint8_t buttonSize;
-    Button *buttons[10];
-    
-    void (*chectButtons)(void);
+    int buttonSize;
+    Button buttons[2];
+
 } InputController;
+
+void handleButtonEvents(Button *buton);
+
+void InputController_checkButtons(InputController *controller ) ;
+
+
+
+InputController addButton(InputController *controller , Button *button);
+
+ InputController initInputController();
+ 
+
 
 
 

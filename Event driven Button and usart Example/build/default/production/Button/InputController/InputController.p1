@@ -1,24 +1,49 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"6085 E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h
-[; ;E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 6085: extern volatile unsigned char OSCCON __attribute__((address(0xFD3)));
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"1699
-[; ;E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 1699: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"2143
-[; ;E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 2143: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
-[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
-[p mainexit ]
-"1089
+[v F2537 `(i ~T0 @X0 0 tf ]
+[v F4 `(v ~T0 @X0 0 tf ]
+"15 Button/InputController/../../usart/UsartDataProcesser.h
+[; ;Button/InputController/../../usart/UsartDataProcesser.h: 15: typedef struct{
+[s S1 `*F4 1 ]
+[n S1 . process ]
+[v F2540 `(uc ~T0 @X0 0 tf ]
+[v F2542 `(i ~T0 @X0 0 tf2`*uc`i ]
+[v F2546 `(v ~T0 @X0 0 tf1`uc ]
+[v F2549 `(v ~T0 @X0 0 tf1`*Cuc ]
+[v F2552 `(v ~T0 @X0 0 tf1`*Cuc ]
+[v F2555 `(v ~T0 @X0 0 tf2`i`uc ]
+[v F2559 `(uc ~T0 @X0 0 tf ]
+"18 Button/InputController/../../usart/../Application/../usart/Usart.h
+[; ;Button/InputController/../../usart/../Application/../usart/Usart.h: 18: typedef struct {
+[s S282 `*F2537 1 `S1 1 `*F2540 1 `*F2542 1 `*F2546 1 `*F2549 1 `*F2552 1 `*F2555 1 `*F2559 1 ]
+[n S282 . isDataReady processor readChar readString writeByte writeString writeLine writeInt readByte ]
+[v F2896 `(v ~T0 @X0 0 tf ]
+"18 Button/InputController/../Button/Button.h
+[; ;Button/InputController/../Button/Button.h: 18: typedef struct {
+[s S285 `*uc 1 `uc 1 `i 1 `*F2896 1 ]
+[n S285 . port pin isPressed onPressed ]
+"28
+[; ;Button/InputController/../Button/Button.h: 28: int Button_getValue(Button *button);
+[v _Button_getValue `(i ~T0 @X0 0 ef1`*S285 ]
+"33 Button/InputController/../../usart/../Application/../usart/Usart.h
+[; ;Button/InputController/../../usart/../Application/../usart/Usart.h: 33: Usart getUsart();
+[v _getUsart `(S282 ~T0 @X0 0 e? ]
+"31 Button/InputController/../../usart/../Application/../Button/InputController/InputController.h
+[; ;Button/InputController/../../usart/../Application/../Button/InputController/InputController.h: 31: typedef struct {
+[s S286 `i 1 `S285 -> 2 `i ]
+[n S286 . buttonSize buttons ]
+"1089 E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h
 [; ;E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
-"31 ./Application/Application.h
-[; ;./Application/Application.h: 31: void setup();
-[v _setup `(v ~T0 @X0 0 e? ]
-"33
-[; ;./Application/Application.h: 33: void loop();
-[v _loop `(v ~T0 @X0 0 e? ]
-"41 ./Application/../ConfigBits.h
+[v F2899 `(v ~T0 @X0 0 tf ]
+"25 Button/InputController/../Button/Button.h
+[; ;Button/InputController/../Button/Button.h: 25: Button Button_initButton(volatile unsigned char *portName,unsigned char pin, void (*onPressed)(void) );
+[v _Button_initButton `(S285 ~T0 @X0 0 ef3`*Vuc`uc`*F2899 ]
+"632 E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h
+[; ;E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 632: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
+[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
+[v F2950 `(v ~T0 @X0 0 tf ]
+[v F2953 `(v ~T0 @X0 0 tf ]
+"41 Button/InputController/../../usart/../Application/../ConfigBits.h
 [p x OSC = INTIO67 ]
 "42
 [p x FCMEN = OFF ]
@@ -498,71 +523,194 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"15 ./Settings.h
-[; ;./Settings.h: 15: void setupSettings() {
-[v _setupSettings `(v ~T0 @X0 1 ef ]
+"31 Button/InputController/../../usart/../Application/../usart/Usart.h
+[; ;Button/InputController/../../usart/../Application/../usart/Usart.h: 31: Usart *applicationUsart;
+[v _applicationUsart `*S282 ~T0 @X0 1 e ]
+"12 Button/InputController/InputController.c
+[; ;Button/InputController/InputController.c: 12: void handleButtonEvents(Button *buton) {
+[v _handleButtonEvents `(v ~T0 @X0 1 ef1`*S285 ]
 {
-[e :U _setupSettings ]
+[e :U _handleButtonEvents ]
+[v _buton `*S285 ~T0 @X0 1 r1 ]
 [f ]
-"16
-[; ;./Settings.h: 16:     OSCCON = 0x72;
-[e = _OSCCON -> -> 114 `i `uc ]
-"18
-[; ;./Settings.h: 18: }
-[e :UE 281 ]
+"25
+[; ;Button/InputController/InputController.c: 25:     if (Button_getValue(buton) == 1) {
+[e $ ! == ( _Button_getValue (1 _buton -> 1 `i 288  ]
+{
+"29
+[; ;Button/InputController/InputController.c: 29:         if (buton->isPressed == 0) {
+[e $ ! == . *U _buton 2 -> 0 `i 289  ]
+{
+"30
+[; ;Button/InputController/InputController.c: 30:             buton->onPressed();
+[e ( *U . *U _buton 3 ..  ]
+"31
+[; ;Button/InputController/InputController.c: 31:             getUsart().writeInt(buton->isPressed,2);
+[e ( *U . ( _getUsart ..  7 (2 , . *U _buton 2 -> -> 2 `i `uc ]
+"32
+[; ;Button/InputController/InputController.c: 32:     getUsart().writeLine("");
+[e ( *U . ( _getUsart ..  6 (1 :s 1C ]
+"36
+[; ;Button/InputController/InputController.c: 36:         }
 }
-"20
-[; ;./Settings.h: 20: void setPortInputsOutputs(){
-[v _setPortInputsOutputs `(v ~T0 @X0 1 ef ]
-{
-[e :U _setPortInputsOutputs ]
-[f ]
-"21
-[; ;./Settings.h: 21:     TRISB = 0x00;
-[e = _TRISB -> -> 0 `i `uc ]
-"23
-[; ;./Settings.h: 23:     TRISD = 0x03;
-[e = _TRISD -> -> 3 `i `uc ]
-"24
-[; ;./Settings.h: 24: }
-[e :UE 282 ]
+[e :U 289 ]
+"37
+[; ;Button/InputController/InputController.c: 37:         buton->isPressed = 1;
+[e = . *U _buton 2 -> 1 `i ]
+"41
+[; ;Button/InputController/InputController.c: 41:     }
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
-"13 main.c
-[; ;main.c: 13: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
+[e $U 290  ]
+"42
+[; ;Button/InputController/InputController.c: 42:     else{
+[e :U 288 ]
 {
-[e :U _main ]
-[f ]
-"14
-[; ;main.c: 14:     setupSettings();
-[e ( _setupSettings ..  ]
-"15
-[; ;main.c: 15:     setPortInputsOutputs();
-[e ( _setPortInputsOutputs ..  ]
-"17
-[; ;main.c: 17:     LATB = 0x01;
-[e = _LATB -> -> 1 `i `uc ]
-"21
-[; ;main.c: 21:     setup();
-[e ( _setup ..  ]
-"23
-[; ;main.c: 23:     while (1) {
-[e :U 291 ]
-{
-"26
-[; ;main.c: 26:         loop();
-[e ( _loop ..  ]
-"33
-[; ;main.c: 33:     }
+"43
+[; ;Button/InputController/InputController.c: 43:          buton->isPressed = 0;
+[e = . *U _buton 2 -> 0 `i ]
+"44
+[; ;Button/InputController/InputController.c: 44:     }
 }
 [e :U 290 ]
-[e $U 291  ]
-[e :U 292 ]
-"35
-[; ;main.c: 35:     return;
-[e $UE 289  ]
-"36
-[; ;main.c: 36: }
-[e :UE 289 ]
+"48
+[; ;Button/InputController/InputController.c: 48: }
+[e :UE 287 ]
 }
+"54
+[; ;Button/InputController/InputController.c: 54: void InputController_checkButtons(InputController *controller ) {
+[v _InputController_checkButtons `(v ~T0 @X0 1 ef1`*S286 ]
+{
+[e :U _InputController_checkButtons ]
+[v _controller `*S286 ~T0 @X0 1 r1 ]
+[f ]
+"55
+[; ;Button/InputController/InputController.c: 55:     int i;
+[v _i `i ~T0 @X0 1 a ]
+"58
+[; ;Button/InputController/InputController.c: 58:     for (i = 0; i < controller->buttonSize; i++) {
+{
+[e = _i -> 0 `i ]
+[e $U 295  ]
+[e :U 292 ]
+{
+"60
+[; ;Button/InputController/InputController.c: 60:         Button buton = controller->buttons[i];
+[v _buton `S285 ~T0 @X0 1 a ]
+[e = _buton *U + &U . *U _controller 1 * -> -> _i `ui `ux -> -> # *U &U . *U _controller 1 `ui `ux ]
+"62
+[; ;Button/InputController/InputController.c: 62:         handleButtonEvents(&buton);
+[e ( _handleButtonEvents (1 &U _buton ]
+"65
+[; ;Button/InputController/InputController.c: 65:     }
+}
+[e ++ _i -> 1 `i ]
+[e :U 295 ]
+[e $ < _i . *U _controller 0 292  ]
+[e :U 293 ]
+}
+"70
+[; ;Button/InputController/InputController.c: 70: }
+[e :UE 291 ]
+}
+"76
+[; ;Button/InputController/InputController.c: 76:  InputController addButton(InputController *controller , Button *button){
+[v _addButton `(S286 ~T0 @X0 1 ef2`*S286`*S285 ]
+{
+[e :U _addButton ]
+[v _controller `*S286 ~T0 @X0 1 r1 ]
+[v _button `*S285 ~T0 @X0 1 r2 ]
+[f ]
+"77
+[; ;Button/InputController/InputController.c: 77:      controller->buttons[(controller->buttonSize)] = *button;
+[e = *U + &U . *U _controller 1 * -> -> . *U _controller 0 `ui `ux -> -> # *U &U . *U _controller 1 `ui `ux *U _button ]
+"78
+[; ;Button/InputController/InputController.c: 78:      (controller->buttonSize) = (controller->buttonSize)+1;
+[e = . *U _controller 0 + . *U _controller 0 -> 1 `i ]
+"79
+[; ;Button/InputController/InputController.c: 79:      return *controller;
+[e ) *U _controller ]
+[e $UE 296  ]
+"81
+[; ;Button/InputController/InputController.c: 81:  }
+[e :UE 296 ]
+}
+"91
+[; ;Button/InputController/InputController.c: 91: void btn1Func() {
+[v _btn1Func `(v ~T0 @X0 1 ef ]
+{
+[e :U _btn1Func ]
+[f ]
+"92
+[; ;Button/InputController/InputController.c: 92:     LATB = LATB << 1;
+[e = _LATB -> << -> _LATB `i -> 1 `i `uc ]
+"93
+[; ;Button/InputController/InputController.c: 93:     int deger = 5;
+[v _deger `i ~T0 @X0 1 a ]
+[e = _deger -> 5 `i ]
+"94
+[; ;Button/InputController/InputController.c: 94:     getUsart().writeInt(deger,2);
+[e ( *U . ( _getUsart ..  7 (2 , _deger -> -> 2 `i `uc ]
+"95
+[; ;Button/InputController/InputController.c: 95:     getUsart().writeString("\r\n");
+[e ( *U . ( _getUsart ..  5 (1 :s 2C ]
+"96
+[; ;Button/InputController/InputController.c: 96: }
+[e :UE 297 ]
+}
+"101
+[; ;Button/InputController/InputController.c: 101: void btn2Func() {
+[v _btn2Func `(v ~T0 @X0 1 ef ]
+{
+[e :U _btn2Func ]
+[f ]
+"103
+[; ;Button/InputController/InputController.c: 103:     LATB = LATB >> 1;
+[e = _LATB -> >> -> _LATB `i -> 1 `i `uc ]
+"104
+[; ;Button/InputController/InputController.c: 104:      int deger = -5;
+[v _deger `i ~T0 @X0 1 a ]
+[e = _deger -U -> 5 `i ]
+"105
+[; ;Button/InputController/InputController.c: 105:     getUsart().writeInt(deger,2);
+[e ( *U . ( _getUsart ..  7 (2 , _deger -> -> 2 `i `uc ]
+"106
+[; ;Button/InputController/InputController.c: 106:     getUsart().writeString("\r\n");
+[e ( *U . ( _getUsart ..  5 (1 :s 3C ]
+"108
+[; ;Button/InputController/InputController.c: 108: }
+[e :UE 298 ]
+}
+"115
+[; ;Button/InputController/InputController.c: 115:  InputController initInputController() {
+[v _initInputController `(S286 ~T0 @X0 1 ef ]
+{
+[e :U _initInputController ]
+[f ]
+"116
+[; ;Button/InputController/InputController.c: 116:     InputController controller;
+[v _controller `S286 ~T0 @X0 1 a ]
+"119
+[; ;Button/InputController/InputController.c: 119:     Button button1 = (Button_initButton(&PORTD,0, btn1Func));
+[v _button1 `S285 ~T0 @X0 1 a ]
+[e = _button1 ( _Button_initButton (3 , , &U _PORTD -> -> 0 `i `uc -> &U _btn1Func `*F2950 ]
+"120
+[; ;Button/InputController/InputController.c: 120:     Button button2 = (Button_initButton(&PORTD,1, btn2Func));
+[v _button2 `S285 ~T0 @X0 1 a ]
+[e = _button2 ( _Button_initButton (3 , , &U _PORTD -> -> 1 `i `uc -> &U _btn2Func `*F2953 ]
+"121
+[; ;Button/InputController/InputController.c: 121:     addButton(&controller,&button1);
+[e ( _addButton (2 , &U _controller &U _button1 ]
+"122
+[; ;Button/InputController/InputController.c: 122:     addButton(&controller,&button2);
+[e ( _addButton (2 , &U _controller &U _button2 ]
+"123
+[; ;Button/InputController/InputController.c: 123:     return controller;
+[e ) _controller ]
+[e $UE 299  ]
+"125
+[; ;Button/InputController/InputController.c: 125: }
+[e :UE 299 ]
+}
+[a 2C 13 10 0 ]
+[a 3C 13 10 0 ]
+[a 1C 0 ]

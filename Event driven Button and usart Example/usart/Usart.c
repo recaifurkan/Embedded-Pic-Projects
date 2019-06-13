@@ -1,14 +1,6 @@
-/* 
- * File:   UsartSetFunctions.h
- * Author: ByRfb
- *
- * Created on 10 Mart 2019 Pazar, 19:05
- */
+
+#include "Usart.h"
 #include "UsartFunctions.h"
-#ifndef USARTSETFUNCTIONS_H
-#define	USARTSETFUNCTIONS_H
-
-
 
 /*
  usart?n gele veride interrupt olu?turacak ?ekilde
@@ -31,6 +23,14 @@ void setupFunctions(Usart *usart) {
     usart->writeInt = USARTWriteInt;
     usart->writeLine = USARTWriteLine;
     usart->writeString = USARTWriteString;
+}
+
+Usart getUsart(){
+    return *applicationUsart;
+}
+
+void setUsart(Usart *usart){
+    applicationUsart = usart;
 }
 
 
@@ -63,6 +63,7 @@ void USARTInit(Usart *usart,long baudRate) {
 
     CREN = 1; // bu da almak için i?e yarar interrupt devreye sokar
     setupFunctions(usart);
+    setUsart(usart);
 
     //    usart.writeInt(calculateSpbrg(9600),5);
 
@@ -70,7 +71,4 @@ void USARTInit(Usart *usart,long baudRate) {
 
 }
 
-
-
-#endif	/* USARTSETFUNCTIONS_H */
 

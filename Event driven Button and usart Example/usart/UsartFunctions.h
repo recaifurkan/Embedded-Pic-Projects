@@ -5,8 +5,12 @@
  * Created on 10 Mart 2019 Pazar, 13:25
  */
 
+
 #ifndef USARTFUNCTIONS_H
 #define	USARTFUNCTIONS_H
+
+
+
 
 /*
  
@@ -16,7 +20,7 @@
 
 
 
-uint8_t USARTDataReady() {
+int USARTDataReady() {
     return PIR1bits.RCIF;
 }
 
@@ -31,8 +35,8 @@ char USARTReadChar() {
     return RCREG;
 }
 
-uint8_t USARTReadString(char *buf, uint8_t max_length) {
-    uint8_t i = 0;
+int USARTReadString(char *buf, int max_length) {
+    int i = 0;
     char tmp = 1;
     for (i = 0; i < max_length - 1; i++) {
         tmp = USARTReadChar();

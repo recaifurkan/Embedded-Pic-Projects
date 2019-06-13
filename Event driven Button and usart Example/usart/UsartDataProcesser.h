@@ -18,6 +18,9 @@ typedef struct{
 // e?er usarttan bilgi geli?i olmu?sa bu fonksiyona dü?er
 
 
+void initProcessor(UsartDataProcessor *processor, void (*callback)(void));
+
+
 
 
 

@@ -16,11 +16,16 @@
  */
 
 typedef struct {
-    char * portName;
+    unsigned char *port;
+    unsigned char pin;
     int isPressed;
-    int (*getValue)(void);
     void (*onPressed)(void);
 } Button;
+
+Button Button_initButton(volatile unsigned char *portName,unsigned char pin, void (*onPressed)(void) );
+
+
+int Button_getValue(Button *button);
 
 
 

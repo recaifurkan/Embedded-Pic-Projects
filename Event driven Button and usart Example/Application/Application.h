@@ -6,15 +6,21 @@
  */
 
 
-#define _XTAL_FREQ 8000000
-#include "../ConfigBits.h"
-#include <stdint.h>
-#include "../usart/usart.h"
-#include "../Button/InputController/InputController.h"
 
+#define _XTAL_FREQ 8000000
 
 #ifndef APPLICATION_H
 #define	APPLICATION_H
+
+
+
+
+#include "../ConfigBits.h"
+
+#include "../usart/Usart.h"
+#include "../Button/InputController/InputController.h"
+
+
 
 
 
@@ -28,9 +34,15 @@ void setProcessor();
 //
 //void setUsart(Usart _usart);
 
-void setup();
+void Application_setup();
 
-void loop();
+void Application_loop();
 
 #endif	/* APPLICATION_H */
+
+
+/*
+ sistemin tan?ml? usart varsa onu getirir
+ */
+
 

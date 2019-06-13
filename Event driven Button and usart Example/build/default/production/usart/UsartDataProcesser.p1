@@ -1,0 +1,23 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[v F4 `(v ~T0 @X0 0 tf ]
+"15 usart/UsartDataProcesser.h
+[; ;usart/UsartDataProcesser.h: 15: typedef struct{
+[s S1 `*F4 1 ]
+[n S1 . process ]
+[v F12 `(v ~T0 @X0 0 tf ]
+[v F15 `(v ~T0 @X0 0 tf ]
+"4 usart/UsartDataProcesser.c
+[; ;usart/UsartDataProcesser.c: 4: void initProcessor(UsartDataProcessor *processor, void (*callback)(void)){
+[v _initProcessor `(v ~T0 @X0 1 ef2`*S1`*F12 ]
+{
+[e :U _initProcessor ]
+[v _processor `*S1 ~T0 @X0 1 r1 ]
+[v _callback `*F15 ~T0 @X0 1 r2 ]
+[f ]
+"5
+[; ;usart/UsartDataProcesser.c: 5:     processor->process = callback;
+[e = . *U _processor 0 _callback ]
+"6
+[; ;usart/UsartDataProcesser.c: 6: }
+[e :UE 2 ]
+}

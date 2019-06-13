@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Clean4520Project.X
+PROJECTNAME=Event driven Button and usart Example
 
 # Active Configuration
 DEFAULTCONF=default

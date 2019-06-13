@@ -4688,31 +4688,56 @@ void setPortInputsOutputs(){
 
 
 # 1 "./Application/Application.h" 1
-# 12 "./Application/Application.h"
-# 1 "./Application/../usart/usart.h" 1
+# 20 "./Application/Application.h"
+# 1 "./Application/../usart/Usart.h" 1
 # 1 "./Application/../usart/UsartDataProcesser.h" 1
 # 15 "./Application/../usart/UsartDataProcesser.h"
 typedef struct{
      void (*process)(void);
 }UsartDataProcessor;
-# 1 "./Application/../usart/usart.h" 2
-# 13 "./Application/../usart/usart.h"
+
+
+
+void initProcessor(UsartDataProcessor *processor, void (*callback)(void));
+# 1 "./Application/../usart/Usart.h" 2
+
+
+# 1 "./Application/../usart/../Application/Application.h" 1
+# 3 "./Application/../usart/Usart.h" 2
+# 18 "./Application/../usart/Usart.h"
 typedef struct {
-    uint8_t(*isDataReady)(void);
+    int(*isDataReady)(void);
     UsartDataProcessor processor;
 
     char (*readChar)(void);
-    uint8_t(*readString)(char *buf, uint8_t max_length);
+    int(*readString)(char *buf, int max_length);
     void (*writeByte)(char ch);
     void (*writeString)(const char *str);
     void (*writeLine)(const char *ln);
     void (*writeInt)(int val, unsigned char field_length);
     unsigned char (*readByte)(void);
 } Usart;
-# 12 "./Application/Application.h" 2
+
+Usart *applicationUsart;
+
+Usart getUsart();
+
+void setUsart(Usart *usart);
+
+
+
+void USARTInit(Usart *usart,long baudRate) ;
+# 20 "./Application/../usart/../Application/Application.h" 2
 
 # 1 "./Application/../Button/InputController/InputController.h" 1
-# 17 "./Application/../Button/InputController/InputController.h"
+# 18 "./Application/../Button/InputController/InputController.h"
+# 1 "./Application/../Button/InputController/../../usart/Usart.h" 1
+
+
+# 1 "./Application/../usart/../Application/Application.h" 1
+# 3 "./Application/../Button/InputController/../../usart/Usart.h" 2
+# 18 "./Application/../Button/InputController/InputController.h" 2
+
 # 1 "./Application/../Button/InputController/../Button/Button.h" 1
 
 
@@ -4859,29 +4884,34 @@ char *tempnam(const char *, const char *);
 # 7 "./Application/../Button/InputController/../Button/Button.h" 2
 # 18 "./Application/../Button/InputController/../Button/Button.h"
 typedef struct {
-    char * portName;
+    unsigned char *port;
+    unsigned char pin;
     int isPressed;
-    int (*getValue)(void);
     void (*onPressed)(void);
 } Button;
-# 17 "./Application/../Button/InputController/InputController.h" 2
+
+Button Button_initButton(volatile unsigned char *portName,unsigned char pin, void (*onPressed)(void) );
 
 
-
-
-
-
-
-
+int Button_getValue(Button *button);
+# 19 "./Application/../Button/InputController/InputController.h" 2
+# 31 "./Application/../Button/InputController/InputController.h"
 typedef struct {
-    uint8_t buttonSize;
-    Button *buttons[10];
+    int buttonSize;
+    Button buttons[2];
 
-    void (*chectButtons)(void);
 } InputController;
-# 13 "./Application/Application.h" 2
+
+void handleButtonEvents(Button *buton);
+
+void InputController_checkButtons(InputController *controller ) ;
 
 
+
+InputController addButton(InputController *controller , Button *button);
+
+ InputController initInputController();
+# 21 "./Application/../usart/../Application/Application.h" 2
 
 
 
@@ -4898,9 +4928,9 @@ void setProcessor();
 
 
 
-void setup();
+void Application_setup();
 
-void loop();
+void Application_loop();
 # 7 "main.c" 2
 
 
@@ -4916,12 +4946,12 @@ void main(void) {
 
 
 
-    setup();
+    Application_setup();
 
     while (1) {
 
 
-        loop();
+        Application_loop();
 
 
 

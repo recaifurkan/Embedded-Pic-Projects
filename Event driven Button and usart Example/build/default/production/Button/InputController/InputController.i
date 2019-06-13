@@ -1,4 +1,4 @@
-# 1 "Application/Application.c"
+# 1 "Button/InputController/InputController.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,11 +6,25 @@
 # 1 "<built-in>" 2
 # 1 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Application/Application.c" 2
-# 1 "Application/Application.h" 1
-# 10 "Application/Application.h"
-# 1 "Application/../ConfigBits.h" 1
-# 41 "Application/../ConfigBits.h"
+# 1 "Button/InputController/InputController.c" 2
+
+
+# 1 "Button/InputController/InputController.h" 1
+# 18 "Button/InputController/InputController.h"
+# 1 "Button/InputController/../../usart/Usart.h" 1
+# 1 "Button/InputController/../../usart/UsartDataProcesser.h" 1
+# 15 "Button/InputController/../../usart/UsartDataProcesser.h"
+typedef struct{
+     void (*process)(void);
+}UsartDataProcessor;
+
+
+
+void initProcessor(UsartDataProcessor *processor, void (*callback)(void));
+# 1 "Button/InputController/../../usart/Usart.h" 2
+
+# 1 "Button/InputController/../../usart/../ConfigBits.h" 1
+# 41 "Button/InputController/../../usart/../ConfigBits.h"
 #pragma config OSC = INTIO67
 #pragma config FCMEN = OFF
 #pragma config IESO = OFF
@@ -4577,119 +4591,66 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 98 "Application/../ConfigBits.h" 2
-# 10 "Application/Application.h" 2
+# 98 "Button/InputController/../../usart/../ConfigBits.h" 2
+# 2 "Button/InputController/../../usart/Usart.h" 2
 
-# 1 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 1 3
-# 22 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 3
-# 1 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 135 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uintptr_t;
-# 150 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long intptr_t;
-# 166 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef signed char int8_t;
+# 1 "Button/InputController/../../usart/../Application/Application.h" 1
+# 20 "Button/InputController/../../usart/../Application/Application.h"
+# 1 "Button/InputController/../../usart/../Application/../usart/Usart.h" 1
 
 
-
-
-typedef short int16_t;
-# 181 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long int32_t;
-
-
-
-
-
-typedef long long int64_t;
-# 196 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long intmax_t;
-
-
-
-
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-# 217 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uint32_t;
-
-
-
-
-
-typedef unsigned long long uint64_t;
-# 237 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long long uintmax_t;
-# 22 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
-
-
-typedef int8_t int_fast8_t;
-
-typedef int64_t int_fast64_t;
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-
-typedef int24_t int_least24_t;
-
-typedef int32_t int_least32_t;
-
-typedef int64_t int_least64_t;
-
-
-typedef uint8_t uint_fast8_t;
-
-typedef uint64_t uint_fast64_t;
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-
-typedef uint24_t uint_least24_t;
-
-typedef uint32_t uint_least32_t;
-
-typedef uint64_t uint_least64_t;
-# 155 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 3
-# 1 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/stdint.h" 1 3
-typedef int32_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint32_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 155 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
-# 11 "Application/Application.h" 2
-
-# 1 "Application/../usart/usart.h" 1
-# 1 "Application/../usart/UsartDataProcesser.h" 1
-# 15 "Application/../usart/UsartDataProcesser.h"
-typedef struct{
-     void (*process)(void);
-}UsartDataProcessor;
-# 1 "Application/../usart/usart.h" 2
-# 13 "Application/../usart/usart.h"
+# 1 "Button/InputController/../../usart/../Application/Application.h" 1
+# 3 "Button/InputController/../../usart/../Application/../usart/Usart.h" 2
+# 18 "Button/InputController/../../usart/../Application/../usart/Usart.h"
 typedef struct {
-    uint8_t(*isDataReady)(void);
+    int(*isDataReady)(void);
     UsartDataProcessor processor;
 
     char (*readChar)(void);
-    uint8_t(*readString)(char *buf, uint8_t max_length);
+    int(*readString)(char *buf, int max_length);
     void (*writeByte)(char ch);
     void (*writeString)(const char *str);
     void (*writeLine)(const char *ln);
     void (*writeInt)(int val, unsigned char field_length);
     unsigned char (*readByte)(void);
 } Usart;
-# 12 "Application/Application.h" 2
 
-# 1 "Application/../Button/InputController/InputController.h" 1
-# 17 "Application/../Button/InputController/InputController.h"
-# 1 "Application/../Button/InputController/../Button/Button.h" 1
+Usart *applicationUsart;
+
+Usart getUsart();
+
+void setUsart(Usart *usart);
+
+
+
+void USARTInit(Usart *usart,long baudRate) ;
+# 20 "Button/InputController/../../usart/../Application/Application.h" 2
+
+# 1 "Button/InputController/../../usart/../Application/../Button/InputController/InputController.h" 1
+# 21 "Button/InputController/../../usart/../Application/Application.h" 2
+
+
+
+
+
+
+__attribute__((picinterrupt(("")))) void ISR(void);
+
+void usartOccured();
+
+
+
+void setProcessor();
+
+
+
+void Application_setup();
+
+void Application_loop();
+# 3 "Button/InputController/../../usart/../Application/../usart/Usart.h" 2
+# 18 "Button/InputController/../../usart/../Application/../Button/InputController/InputController.h" 2
+
+# 1 "Button/InputController/../Button/Button.h" 1
 
 
 
@@ -4832,162 +4793,79 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 7 "Application/../Button/InputController/../Button/Button.h" 2
-# 18 "Application/../Button/InputController/../Button/Button.h"
+# 7 "Button/InputController/../Button/Button.h" 2
+# 18 "Button/InputController/../Button/Button.h"
 typedef struct {
-    char * portName;
+    unsigned char *port;
+    unsigned char pin;
     int isPressed;
-    int (*getValue)(void);
     void (*onPressed)(void);
 } Button;
-# 17 "Application/../Button/InputController/InputController.h" 2
+
+Button Button_initButton(volatile unsigned char *portName,unsigned char pin, void (*onPressed)(void) );
 
 
-
-
-
-
-
-
+int Button_getValue(Button *button);
+# 19 "Button/InputController/../../usart/../Application/../Button/InputController/InputController.h" 2
+# 31 "Button/InputController/../../usart/../Application/../Button/InputController/InputController.h"
 typedef struct {
-    uint8_t buttonSize;
-    Button *buttons[10];
+    int buttonSize;
+    Button buttons[2];
 
-    void (*chectButtons)(void);
 } InputController;
-# 13 "Application/Application.h" 2
+
+void handleButtonEvents(Button *buton);
+
+void InputController_checkButtons(InputController *controller ) ;
 
 
 
+InputController addButton(InputController *controller , Button *button);
 
-
-
-
-
-__attribute__((picinterrupt(("")))) void ISR(void);
-
-void usartOccured();
-
-
-
-void setProcessor();
-
-
-
-void setup();
-
-void loop();
-# 1 "Application/Application.c" 2
-
-
-
-# 1 "Application/../Button/InputController/InputControllerFunctions.h" 1
-
-
-
-
-
-
-# 1 "Application/../Button/InputController/../Button/Button.h" 1
-# 7 "Application/../Button/InputController/InputControllerFunctions.h" 2
-
-
-
-# 1 "Application/../Button/InputController/../Button/ButtonFunctions.h" 1
-
-
-
-
-
-
-# 1 "Application/../Button/InputController/../Button/Button.h" 1
-# 7 "Application/../Button/InputController/../Button/ButtonFunctions.h" 2
-
-
-
-
-
-
-
-
-Button initButton(char *portName, int (*getValue)(void),void (*onPressed)(void) ){
-    Button buton;
-    buton.portName = portName;
-    buton.getValue = getValue;
-    buton.onPressed = onPressed;
-    return buton;
-}
-# 10 "Application/../Button/InputController/InputControllerFunctions.h" 2
-
-
-
-
-# 1 "Application/../Button/InputController/../ButonlarSpesific/Buton1.h" 1
-# 14 "Application/../Button/InputController/../ButonlarSpesific/Buton1.h"
-Usart *bUsart;
-
-setButton1Usart(Usart *_usart){
-    bUsart = _usart;
-}
-
-void btn1Func() {
-    LATB = LATB << 1;
-    int deger = LATB;
-    bUsart->writeInt(deger,2);
-    bUsart->writeString("\r\n");
-}
-
-
-
-
-
-int btn1getValue() {
-    return PORTDbits.RD0;
-}
-# 14 "Application/../Button/InputController/InputControllerFunctions.h" 2
-
-# 1 "Application/../Button/InputController/../ButonlarSpesific/Buton2.h" 1
-# 17 "Application/../Button/InputController/../ButonlarSpesific/Buton2.h"
-void btn2Func() {
-
-    LATB = LATB >> 1;
-
-}
-
-int btn2getValue() {
-    return PORTDbits.RD1;
-}
-# 15 "Application/../Button/InputController/InputControllerFunctions.h" 2
-# 25 "Application/../Button/InputController/InputControllerFunctions.h"
+ InputController initInputController();
+# 3 "Button/InputController/InputController.c" 2
+# 12 "Button/InputController/InputController.c"
 void handleButtonEvents(Button *buton) {
+# 25 "Button/InputController/InputController.c"
+    if (Button_getValue(buton) == 1) {
 
-    if (buton->getValue()) {
+
 
         if (buton->isPressed == 0) {
             buton->onPressed();
+            getUsart().writeInt(buton->isPressed,2);
+    getUsart().writeLine("");
+
 
 
         }
         buton->isPressed = 1;
 
 
-    } else {
-        buton->isPressed = 0;
+
     }
+    else{
+         buton->isPressed = 0;
+    }
+
+
+
 }
 
 
 
 
 
-void chectButtons(InputController *controller ) {
+void InputController_checkButtons(InputController *controller ) {
     int i;
 
 
     for (i = 0; i < controller->buttonSize; i++) {
 
-        Button *buton = controller->buttons[i];
-        handleButtonEvents(buton);
+        Button buton = controller->buttons[i];
+
+        handleButtonEvents(&buton);
+
 
     }
 
@@ -5001,245 +4879,44 @@ void chectButtons(InputController *controller ) {
 
 
  InputController addButton(InputController *controller , Button *button){
-     controller->buttons[(controller->buttonSize)] = button;
+     controller->buttons[(controller->buttonSize)] = *button;
      (controller->buttonSize) = (controller->buttonSize)+1;
      return *controller;
 
  }
+# 91 "Button/InputController/InputController.c"
+void btn1Func() {
+    LATB = LATB << 1;
+    int deger = 5;
+    getUsart().writeInt(deger,2);
+    getUsart().writeString("\r\n");
+}
 
 
 
 
- InputController initInputController( void (*_chectButtons)(void)) {
+void btn2Func() {
+
+    LATB = LATB >> 1;
+     int deger = -5;
+    getUsart().writeInt(deger,2);
+    getUsart().writeString("\r\n");
+
+}
+
+
+
+
+
+
+ InputController initInputController() {
     InputController controller;
-    controller.chectButtons = _chectButtons;
-    Button button1 = initButton("PORTDbits.RD0",btn1getValue, btn1Func);
-    Button button2 = initButton("PORTDbits.RD1",btn2getValue, btn2Func);
+
+
+    Button button1 = (Button_initButton(&PORTD,0, btn1Func));
+    Button button2 = (Button_initButton(&PORTD,1, btn2Func));
     addButton(&controller,&button1);
     addButton(&controller,&button2);
     return controller;
 
-}
-
-
-
-
-
-
- InputController initInputControllerDefaultFunction(void) {
-
-    return initInputController(chectButtons);
-
-}
-# 4 "Application/Application.c" 2
-
-# 1 "Application/../usart/UsartSetFunctions.h" 1
-
-
-
-
-
-
-# 1 "Application/../usart/UsartFunctions.h" 1
-# 19 "Application/../usart/UsartFunctions.h"
-uint8_t USARTDataReady() {
-    return PIR1bits.RCIF;
-}
-
-unsigned char USARTReadByte() {
-    while (!RCIF);
-
-    return RCREG;
-}
-
-char USARTReadChar() {
-    while (!USARTDataReady());
-    return RCREG;
-}
-
-uint8_t USARTReadString(char *buf, uint8_t max_length) {
-    uint8_t i = 0;
-    char tmp = 1;
-    for (i = 0; i < max_length - 1; i++) {
-        tmp = USARTReadChar();
-
-        if (tmp == '\0' || tmp == '\n' || tmp == '\r') {
-            break;
-        }
-        buf[i] = tmp;
-    }
-
-    buf[i + 1] = '\0';
-
-    return i;
-}
-
-
-
-
-
-
-
-void USARTWriteByte(char ch) {
-
-    while (!TXIF);
-
-
-    TXREG = ch;
-}
-
-void USARTWriteString(const char *str) {
-    while ((*str) != '\0') {
-
-        while (!TXIF);
-
-
-        TXREG = (*str);
-
-
-        str++;
-    }
-}
-# 87 "Application/../usart/UsartFunctions.h"
-void USARTWriteLine(const char *ln) {
-    USARTWriteString(ln);
-    USARTWriteString("\r\n");
-}
-
-void USARTWriteInt(int val, unsigned char field_length) {
-    if (val < 0) {
-        USARTWriteByte('-');
-        val = (val * (-1));
-    }
-
-
-    char str[5] = {0, 0, 0, 0, 0};
-    int i = 4, j = 0;
-    while (val) {
-        str[i] = val % 10;
-        val = val / 10;
-        i--;
-    }
-    if (field_length > 5)
-        while (str[j] == 0) j++;
-    else
-        j = 5 - field_length;
-
-    for (i = j; i < 5; i++) {
-        USARTWriteByte('0' + str[i] );
-    }
-}
-# 7 "Application/../usart/UsartSetFunctions.h" 2
-# 20 "Application/../usart/UsartSetFunctions.h"
-void setupFunctions(Usart *usart) {
-
-    usart->isDataReady = USARTDataReady;
-
-
-    usart->readByte = USARTReadByte;
-    usart->readChar = USARTReadChar;
-    usart->readString = USARTReadString;
-
-
-    usart->writeByte = USARTWriteByte;
-    usart->writeInt = USARTWriteInt;
-    usart->writeLine = USARTWriteLine;
-    usart->writeString = USARTWriteString;
-}
-
-
-
-void enableInterrupts() {
-    GIE = 1;
-    PEIE = 1;
-    RCIE = 1;
-}
-long calculateSpbrg(long baudRate) {
-    long bolum = 16 * baudRate;
-    return ((8000000 / bolum) - 1);
-}
-
-void USARTInit(Usart *usart,long baudRate) {
-
-
-    enableInterrupts();
-
-    BRGH = 1;
-    SPBRG = calculateSpbrg(baudRate);
-
-
-    SYNC = 0;
-    SPEN = 1;
-
-    TRISC6 = 1;
-    TRISC7 = 1;
-    TXEN = 1;
-
-    CREN = 1;
-    setupFunctions(usart);
-
-
-
-
-
-}
-# 5 "Application/Application.c" 2
-
-
-
-
-
-Usart usart;
-InputController controller;
-
-void setProcessor() {
-    UsartDataProcessor _processor;
-    _processor.process = usartOccured;
-
-    usart.processor = _processor;
-
-
-
-}
-
-void setup() {
-    controller = initInputControllerDefaultFunction();
-    USARTInit(&usart, 9600);
-
-    setProcessor();
-    setButton1Usart(&usart);
-
-
-}
-
-void loop() {
-    chectButtons(&controller);
-
-
-
-
-}
-
-void usartOccured() {
-
-    if (usart.isDataReady) {
-        char text[20] = "";
-        usart.readString(text, 20);
-
-        int i = atoi(text);
-
-        LATB = i;
-
-        usart.writeInt(i, 3);
-        usart.writeLine("");
-    }
-
-}
-
-__attribute__((picinterrupt(("")))) void ISR(void)
-{
-    if (usart.isDataReady)
-    {
-        usart.processor.process();
-    }
 }

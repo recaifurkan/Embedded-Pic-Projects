@@ -18,12 +18,12 @@ void main(void) {
 
     //    setController(controller);
     //    setUsart(usart); // applicationda kullanbilmek için bunu buaray koyduk
-    setup();
+    Application_setup();
 
     while (1) {
 
         //      
-        loop();
+        Application_loop();
 
         //        
         //    }

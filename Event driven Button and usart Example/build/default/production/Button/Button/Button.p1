@@ -1,54 +1,27 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F2537 `(i ~T0 @X0 0 tf ]
-[v F2528 `(v ~T0 @X0 0 tf ]
-"15 Application/../usart/UsartDataProcesser.h
-[; ;Application/../usart/UsartDataProcesser.h: 15: typedef struct{
-[s S281 `*F2528 1 ]
-[n S281 . process ]
-[v F2540 `(uc ~T0 @X0 0 tf ]
-[v F2542 `(i ~T0 @X0 0 tf2`*uc`i ]
-[v F2546 `(v ~T0 @X0 0 tf1`uc ]
-[v F2549 `(v ~T0 @X0 0 tf1`*Cuc ]
-[v F2552 `(v ~T0 @X0 0 tf1`*Cuc ]
-[v F2555 `(v ~T0 @X0 0 tf2`i`uc ]
-[v F2559 `(uc ~T0 @X0 0 tf ]
-"18 Application/../Button/InputController/../../usart/Usart.h
-[s S282 `*F2537 1 `S281 1 `*F2540 1 `*F2542 1 `*F2546 1 `*F2549 1 `*F2552 1 `*F2555 1 `*F2559 1 ]
-[n S282 . isDataReady processor readChar readString writeByte writeString writeLine writeInt readByte ]
-[v F2891 `(v ~T0 @X0 0 tf ]
-"18 Application/../Button/InputController/../Button/Button.h
-[; ;Application/../Button/InputController/../Button/Button.h: 18: typedef struct {
-[s S285 `*uc 1 `uc 1 `i 1 `*F2891 1 ]
-[n S285 . port pin isPressed onPressed ]
-"31 Application/../Button/InputController/InputController.h
-[; ;Application/../Button/InputController/InputController.h: 31: typedef struct {
-[s S286 `i 1 `S285 -> 2 `i ]
-[n S286 . buttonSize buttons ]
-"29 Application/../usart/../Application/Application.h
-[; ;Application/../usart/../Application/Application.h: 29: void usartOccured();
-[v _usartOccured `(v ~T0 @X0 0 e? ]
-[v F2922 `(v ~T0 @X0 0 tf ]
-"33 Application/../Button/InputController/../../usart/Usart.h
-[v _getUsart `(S282 ~T0 @X0 0 e? ]
-"39
-[v _USARTInit `(v ~T0 @X0 0 ef2`*S282`l ]
-"45 Application/../Button/InputController/InputController.h
-[; ;Application/../Button/InputController/InputController.h: 45:  InputController initInputController();
-[v _initInputController `(S286 ~T0 @X0 0 e? ]
-"39
-[; ;Application/../Button/InputController/InputController.h: 39: void InputController_checkButtons(InputController *controller ) ;
-[v _InputController_checkButtons `(v ~T0 @X0 0 ef1`*S286 ]
-[v F2932 `(i ~T0 @X0 0 tf ]
-"23 E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdlib.h
-[; ;E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\c99\stdlib.h: 23: int atoi (const char *);
-[v _atoi `(i ~T0 @X0 0 ef1`*Cuc ]
-"1089 E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h
-[; ;E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
-[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
-[t ~ __interrupt . k ]
-[t T42 __interrupt ]
-[v F2947 `(i ~T0 @X0 0 tf ]
-"41 Application/../usart/../ConfigBits.h
+[v F2870 `(i ~T0 @X0 0 tf ]
+[v F340 `(v ~T0 @X0 0 tf ]
+"15 Button/Button/../../usart/UsartDataProcesser.h
+[; ;Button/Button/../../usart/UsartDataProcesser.h: 15: typedef struct{
+[s S4 `*F340 1 ]
+[n S4 . process ]
+[v F2873 `(uc ~T0 @X0 0 tf ]
+[v F2875 `(i ~T0 @X0 0 tf2`*uc`i ]
+[v F2879 `(v ~T0 @X0 0 tf1`uc ]
+[v F2882 `(v ~T0 @X0 0 tf1`*Cuc ]
+[v F2885 `(v ~T0 @X0 0 tf1`*Cuc ]
+[v F2888 `(v ~T0 @X0 0 tf2`i`uc ]
+[v F2892 `(uc ~T0 @X0 0 tf ]
+"18 Button/Button/../../usart/../Application/../Button/InputController/../../usart/Usart.h
+[s S285 `*F2870 1 `S4 1 `*F2873 1 `*F2875 1 `*F2879 1 `*F2882 1 `*F2885 1 `*F2888 1 `*F2892 1 ]
+[n S285 . isDataReady processor readChar readString writeByte writeString writeLine writeInt readByte ]
+[v F2919 `(v ~T0 @X0 0 tf ]
+[v F328 `(v ~T0 @X0 0 tf ]
+"18 Button/Button/../../usart/../Application/../Button/InputController/../Button/Button.h
+[s S3 `*uc 1 `uc 1 `i 1 `*F328 1 ]
+[n S3 . port pin isPressed onPressed ]
+[v F2923 `(v ~T0 @X0 0 tf ]
+"41 Button/Button/../../usart/../Application/../ConfigBits.h
 [p x OSC = INTIO67 ]
 "42
 [p x FCMEN = OFF ]
@@ -528,137 +501,72 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7001
 [; ;E:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic18f4520.h: 7001: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"31 Application/../Button/InputController/../../usart/Usart.h
-[v _applicationUsart `*S282 ~T0 @X0 1 e ]
-"4 Application/Application.c
-[; ;Application/Application.c: 4: InputController controller;
-[v _controller `S286 ~T0 @X0 1 e ]
-"11
-[; ;Application/Application.c: 11: void setProcessor() {
-[v _setProcessor `(v ~T0 @X0 1 ef ]
+"31 Button/Button/../../usart/../Application/../Button/InputController/../../usart/Usart.h
+[v _applicationUsart `*S285 ~T0 @X0 1 e ]
+"9 Button/Button/Button.c
+[; ;Button/Button/Button.c: 9: Button Button_initButton(volatile unsigned char *portName,unsigned char pin, void (*onPressed)(void) ){
+[v _Button_initButton `(S3 ~T0 @X0 1 ef3`*Vuc`uc`*F2919 ]
 {
-[e :U _setProcessor ]
+[e :U _Button_initButton ]
+[v _portName `*Vuc ~T0 @X0 1 r1 ]
+[v _pin `uc ~T0 @X0 1 r2 ]
+[v _onPressed `*F2923 ~T0 @X0 1 r3 ]
 [f ]
+"10
+[; ;Button/Button/Button.c: 10:     Button buton;
+[v _buton `S3 ~T0 @X0 1 a ]
+"11
+[; ;Button/Button/Button.c: 11:     buton.port = portName;
+[e = . _buton 0 -> _portName `*uc ]
 "12
-[; ;Application/Application.c: 12:     UsartDataProcessor _processor;
-[v __processor `S281 ~T0 @X0 1 a ]
+[; ;Button/Button/Button.c: 12:     buton.pin = pin;
+[e = . _buton 1 _pin ]
 "13
-[; ;Application/Application.c: 13:     _processor.process = usartOccured;
-[e = . __processor 0 -> &U _usartOccured `*F2922 ]
+[; ;Button/Button/Button.c: 13:     buton.isPressed = 0;
+[e = . _buton 2 -> 0 `i ]
 "14
-[; ;Application/Application.c: 14:     Usart us = getUsart();
-[v _us `S282 ~T0 @X0 1 a ]
-[e = _us ( _getUsart ..  ]
+[; ;Button/Button/Button.c: 14:     buton.onPressed = onPressed;
+[e = . _buton 3 _onPressed ]
 "15
-[; ;Application/Application.c: 15:     us.processor = _processor;
-[e = . _us 1 __processor ]
-"19
-[; ;Application/Application.c: 19: }
+[; ;Button/Button/Button.c: 15:     return buton;
+[e ) _buton ]
+[e $UE 287  ]
+"16
+[; ;Button/Button/Button.c: 16: }
 [e :UE 287 ]
 }
-"27
-[; ;Application/Application.c: 27: void Application_setup() {
-[v _Application_setup `(v ~T0 @X0 1 ef ]
+"18
+[; ;Button/Button/Button.c: 18: int getThBit(char port, char connectedBit){
+[v _getThBit `(i ~T0 @X0 1 ef2`uc`uc ]
 {
-[e :U _Application_setup ]
+[e :U _getThBit ]
+[v _port `uc ~T0 @X0 1 r1 ]
+[v _connectedBit `uc ~T0 @X0 1 r2 ]
 [f ]
-"29
-[; ;Application/Application.c: 29:     Usart usart;
-[v _usart `S282 ~T0 @X0 1 a ]
-"30
-[; ;Application/Application.c: 30:     USARTInit(&usart, 9600);
-[e ( _USARTInit (2 , &U _usart -> -> 9600 `i `l ]
-"33
-[; ;Application/Application.c: 33:     setProcessor();
-[e ( _setProcessor ..  ]
-"34
-[; ;Application/Application.c: 34:     controller = initInputController();
-[e = _controller ( _initInputController ..  ]
-"40
-[; ;Application/Application.c: 40: }
+"19
+[; ;Button/Button/Button.c: 19:     return (port & (1 << connectedBit)) > 0 ? 1 : 0;
+[e ) ? > & -> _port `i << -> 1 `i -> _connectedBit `i -> 0 `i : -> 1 `i -> 0 `i ]
+[e $UE 288  ]
+"21
+[; ;Button/Button/Button.c: 21: }
 [e :UE 288 ]
 }
-"42
-[; ;Application/Application.c: 42: void Application_loop() {
-[v _Application_loop `(v ~T0 @X0 1 ef ]
+"23
+[; ;Button/Button/Button.c: 23: int Button_getValue(Button *button){
+[v _Button_getValue `(i ~T0 @X0 1 ef1`*S3 ]
 {
-[e :U _Application_loop ]
+[e :U _Button_getValue ]
+[v _button `*S3 ~T0 @X0 1 r1 ]
 [f ]
-"49
-[; ;Application/Application.c: 49:     InputController_checkButtons(&controller);
-[e ( _InputController_checkButtons (1 &U _controller ]
-"54
-[; ;Application/Application.c: 54: }
+"25
+[; ;Button/Button/Button.c: 25:     int value = *(button->port) ;
+[v _value `i ~T0 @X0 1 a ]
+[e = _value -> *U . *U _button 0 `i ]
+"27
+[; ;Button/Button/Button.c: 27:     return getThBit(value,button->pin);
+[e ) ( _getThBit (2 , -> _value `uc -> . *U _button 1 `uc ]
+[e $UE 289  ]
+"28
+[; ;Button/Button/Button.c: 28: }
 [e :UE 289 ]
 }
-"58
-[; ;Application/Application.c: 58: void usartOccured() {
-[v _usartOccured `(v ~T0 @X0 1 ef ]
-{
-[e :U _usartOccured ]
-[f ]
-"60
-[; ;Application/Application.c: 60:     if (getUsart().isDataReady) {
-[e $ ! != . ( _getUsart ..  0 -> -> 0 `i `*F2932 291  ]
-{
-[v F2933 `uc ~T0 @X0 -> 20 `i s ]
-[i F2933
-:U ..
-"61
-[; ;Application/Application.c: 61:         char text[20] = "";
--> 0 `c
-..
-]
-[v _text `uc ~T0 @X0 -> 20 `i a ]
-[e = _text F2933 ]
-"62
-[; ;Application/Application.c: 62:         getUsart().readString(text, 20);
-[e ( *U . ( _getUsart ..  3 (2 , &U _text -> 20 `i ]
-"64
-[; ;Application/Application.c: 64:         int i = atoi(text);
-[v _i `i ~T0 @X0 1 a ]
-[e = _i ( _atoi (1 -> &U _text `*Cuc ]
-"66
-[; ;Application/Application.c: 66:         LATB = i;
-[e = _LATB -> _i `uc ]
-"68
-[; ;Application/Application.c: 68:         getUsart().writeInt(i, 3);
-[e ( *U . ( _getUsart ..  7 (2 , _i -> -> 3 `i `uc ]
-"69
-[; ;Application/Application.c: 69:         getUsart().writeLine("");
-[e ( *U . ( _getUsart ..  6 (1 :s 1C ]
-"70
-[; ;Application/Application.c: 70:     }
-}
-[e :U 291 ]
-"72
-[; ;Application/Application.c: 72: }
-[e :UE 290 ]
-}
-[v $root$_ISR `(v ~T0 @X0 0 e ]
-"74
-[; ;Application/Application.c: 74: __attribute__((picinterrupt(("")))) void ISR(void)
-[v _ISR `(v ~T42 @X0 1 ef ]
-"75
-[; ;Application/Application.c: 75: {
-{
-[e :U _ISR ]
-[f ]
-"76
-[; ;Application/Application.c: 76:     if (getUsart().isDataReady)
-[e $ ! != . ( _getUsart ..  0 -> -> 0 `i `*F2947 293  ]
-"77
-[; ;Application/Application.c: 77:     {
-{
-"78
-[; ;Application/Application.c: 78:         getUsart().processor.process();
-[e ( *U . . ( _getUsart ..  1 0 ..  ]
-"79
-[; ;Application/Application.c: 79:     }
-}
-[e :U 293 ]
-"80
-[; ;Application/Application.c: 80: }
-[e :UE 292 ]
-}
-[a 1C 0 ]

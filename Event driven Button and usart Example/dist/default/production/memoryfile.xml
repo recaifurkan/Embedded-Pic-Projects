@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\Clean4520Project.X.production.hex">
+  <executable name="dist/default/production\Event_driven_Button_and_usart_Example.production.hex">
     <memory name="program">
       <units>bytes</units>
       <length>32768</length>
-      <used>3608</used>
-      <free>29160</free>
+      <used>4028</used>
+      <free>28740</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1536</length>
-      <used>226</used>
-      <free>1310</free>
+      <used>194</used>
+      <free>1342</free>
     </memory>
   </executable>
 </project>

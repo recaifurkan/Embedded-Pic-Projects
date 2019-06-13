@@ -1,4 +1,4 @@
-# 1 "Application/Application.c"
+# 1 "usart/Usart.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,11 +6,22 @@
 # 1 "<built-in>" 2
 # 1 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Application/Application.c" 2
-# 1 "Application/Application.h" 1
-# 18 "Application/Application.h"
-# 1 "Application/../ConfigBits.h" 1
-# 41 "Application/../ConfigBits.h"
+# 1 "usart/Usart.c" 2
+
+# 1 "usart/Usart.h" 1
+# 1 "usart/UsartDataProcesser.h" 1
+# 15 "usart/UsartDataProcesser.h"
+typedef struct{
+     void (*process)(void);
+}UsartDataProcessor;
+
+
+
+void initProcessor(UsartDataProcessor *processor, void (*callback)(void));
+# 1 "usart/Usart.h" 2
+
+# 1 "usart/../ConfigBits.h" 1
+# 41 "usart/../ConfigBits.h"
 #pragma config OSC = INTIO67
 #pragma config FCMEN = OFF
 #pragma config IESO = OFF
@@ -4577,26 +4588,17 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "E:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 98 "Application/../ConfigBits.h" 2
-# 18 "Application/Application.h" 2
+# 98 "usart/../ConfigBits.h" 2
+# 2 "usart/Usart.h" 2
+
+# 1 "usart/../Application/Application.h" 1
+# 20 "usart/../Application/Application.h"
+# 1 "usart/../Application/../usart/Usart.h" 1
 
 
-# 1 "Application/../usart/Usart.h" 1
-# 1 "Application/../usart/UsartDataProcesser.h" 1
-# 15 "Application/../usart/UsartDataProcesser.h"
-typedef struct{
-     void (*process)(void);
-}UsartDataProcessor;
-
-
-
-void initProcessor(UsartDataProcessor *processor, void (*callback)(void));
-# 1 "Application/../usart/Usart.h" 2
-
-
-# 1 "Application/../usart/../Application/Application.h" 1
-# 3 "Application/../usart/Usart.h" 2
-# 18 "Application/../usart/Usart.h"
+# 1 "usart/../Application/Application.h" 1
+# 3 "usart/../Application/../usart/Usart.h" 2
+# 18 "usart/../Application/../usart/Usart.h"
 typedef struct {
     int(*isDataReady)(void);
     UsartDataProcessor processor;
@@ -4619,18 +4621,18 @@ void setUsart(Usart *usart);
 
 
 void USARTInit(Usart *usart,long baudRate) ;
-# 20 "Application/../usart/../Application/Application.h" 2
+# 20 "usart/../Application/Application.h" 2
 
-# 1 "Application/../Button/InputController/InputController.h" 1
-# 18 "Application/../Button/InputController/InputController.h"
-# 1 "Application/../Button/InputController/../../usart/Usart.h" 1
+# 1 "usart/../Application/../Button/InputController/InputController.h" 1
+# 18 "usart/../Application/../Button/InputController/InputController.h"
+# 1 "usart/../Application/../Button/InputController/../../usart/Usart.h" 1
 
 
-# 1 "Application/../usart/../Application/Application.h" 1
-# 3 "Application/../Button/InputController/../../usart/Usart.h" 2
-# 18 "Application/../Button/InputController/InputController.h" 2
+# 1 "usart/../Application/Application.h" 1
+# 3 "usart/../Application/../Button/InputController/../../usart/Usart.h" 2
+# 18 "usart/../Application/../Button/InputController/InputController.h" 2
 
-# 1 "Application/../Button/InputController/../Button/Button.h" 1
+# 1 "usart/../Application/../Button/InputController/../Button/Button.h" 1
 
 
 
@@ -4773,8 +4775,8 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 7 "Application/../Button/InputController/../Button/Button.h" 2
-# 18 "Application/../Button/InputController/../Button/Button.h"
+# 7 "usart/../Application/../Button/InputController/../Button/Button.h" 2
+# 18 "usart/../Application/../Button/InputController/../Button/Button.h"
 typedef struct {
     unsigned char *port;
     unsigned char pin;
@@ -4786,8 +4788,8 @@ Button Button_initButton(volatile unsigned char *portName,unsigned char pin, voi
 
 
 int Button_getValue(Button *button);
-# 19 "Application/../Button/InputController/InputController.h" 2
-# 31 "Application/../Button/InputController/InputController.h"
+# 19 "usart/../Application/../Button/InputController/InputController.h" 2
+# 31 "usart/../Application/../Button/InputController/InputController.h"
 typedef struct {
     int buttonSize;
     Button buttons[2];
@@ -4803,7 +4805,7 @@ void InputController_checkButtons(InputController *controller ) ;
 InputController addButton(InputController *controller , Button *button);
 
  InputController initInputController();
-# 21 "Application/../usart/../Application/Application.h" 2
+# 21 "usart/../Application/Application.h" 2
 
 
 
@@ -4823,84 +4825,158 @@ void setProcessor();
 void Application_setup();
 
 void Application_loop();
-# 1 "Application/Application.c" 2
+# 3 "usart/../Application/../Button/InputController/../../usart/Usart.h" 2
+# 2 "usart/Usart.c" 2
 
-
-
-InputController controller;
-
-
-
-
-
-
-void setProcessor() {
-    UsartDataProcessor _processor;
-    _processor.process = usartOccured;
-    Usart us = getUsart();
-    us.processor = _processor;
-
-
-
+# 1 "usart/UsartFunctions.h" 1
+# 23 "usart/UsartFunctions.h"
+int USARTDataReady() {
+    return PIR1bits.RCIF;
 }
 
+unsigned char USARTReadByte() {
+    while (!RCIF);
 
-
-
-
-
-
-void Application_setup() {
-
-    Usart usart;
-    USARTInit(&usart, 9600);
-
-
-    setProcessor();
-    controller = initInputController();
-
-
-
-
-
+    return RCREG;
 }
 
-void Application_loop() {
-
-
-
-
-
-
-    InputController_checkButtons(&controller);
-
-
-
-
+char USARTReadChar() {
+    while (!USARTDataReady());
+    return RCREG;
 }
 
+int USARTReadString(char *buf, int max_length) {
+    int i = 0;
+    char tmp = 1;
+    for (i = 0; i < max_length - 1; i++) {
+        tmp = USARTReadChar();
 
-
-void usartOccured() {
-
-    if (getUsart().isDataReady) {
-        char text[20] = "";
-        getUsart().readString(text, 20);
-
-        int i = atoi(text);
-
-        LATB = i;
-
-        getUsart().writeInt(i, 3);
-        getUsart().writeLine("");
+        if (tmp == '\0' || tmp == '\n' || tmp == '\r') {
+            break;
+        }
+        buf[i] = tmp;
     }
 
+    buf[i + 1] = '\0';
+
+    return i;
 }
 
-__attribute__((picinterrupt(("")))) void ISR(void)
-{
-    if (getUsart().isDataReady)
-    {
-        getUsart().processor.process();
+
+
+
+
+
+
+void USARTWriteByte(char ch) {
+
+    while (!TXIF);
+
+
+    TXREG = ch;
+}
+
+void USARTWriteString(const char *str) {
+    while ((*str) != '\0') {
+
+        while (!TXIF);
+
+
+        TXREG = (*str);
+
+
+        str++;
     }
+}
+# 91 "usart/UsartFunctions.h"
+void USARTWriteLine(const char *ln) {
+    USARTWriteString(ln);
+    USARTWriteString("\r\n");
+}
+
+void USARTWriteInt(int val, unsigned char field_length) {
+    if (val < 0) {
+        USARTWriteByte('-');
+        val = (val * (-1));
+    }
+
+
+    char str[5] = {0, 0, 0, 0, 0};
+    int i = 4, j = 0;
+    while (val) {
+        str[i] = val % 10;
+        val = val / 10;
+        i--;
+    }
+    if (field_length > 5)
+        while (str[j] == 0) j++;
+    else
+        j = 5 - field_length;
+
+    for (i = j; i < 5; i++) {
+        USARTWriteByte('0' + str[i] );
+    }
+}
+# 3 "usart/Usart.c" 2
+# 12 "usart/Usart.c"
+void setupFunctions(Usart *usart) {
+
+    usart->isDataReady = USARTDataReady;
+
+
+    usart->readByte = USARTReadByte;
+    usart->readChar = USARTReadChar;
+    usart->readString = USARTReadString;
+
+
+    usart->writeByte = USARTWriteByte;
+    usart->writeInt = USARTWriteInt;
+    usart->writeLine = USARTWriteLine;
+    usart->writeString = USARTWriteString;
+}
+
+Usart getUsart(){
+    return *applicationUsart;
+}
+
+void setUsart(Usart *usart){
+    applicationUsart = usart;
+}
+
+
+
+void enableInterrupts() {
+    GIE = 1;
+    PEIE = 1;
+    RCIE = 1;
+}
+long calculateSpbrg(long baudRate) {
+    long bolum = 16 * baudRate;
+    return ((8000000 / bolum) - 1);
+}
+
+void USARTInit(Usart *usart,long baudRate) {
+
+
+    enableInterrupts();
+
+    BRGH = 1;
+    SPBRG = calculateSpbrg(baudRate);
+
+
+    SYNC = 0;
+    SPEN = 1;
+
+    TRISC6 = 1;
+    TRISC7 = 1;
+    TXEN = 1;
+
+    CREN = 1;
+    setupFunctions(usart);
+    setUsart(usart);
+
+
+
+
+
 }

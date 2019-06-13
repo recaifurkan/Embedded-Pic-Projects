@@ -1,6 +1,11 @@
 #include "UsartDataProcesser.h"
+#include "../ConfigBits.h"
+#include "../Application/Application.h"
+
+
 #ifndef USART_H
 #define USART_H
+
 
 
 
@@ -11,11 +16,11 @@
  */
 
 typedef struct {
-    uint8_t(*isDataReady)(void);
+    int(*isDataReady)(void);
     UsartDataProcessor processor;
     
     char (*readChar)(void);
-    uint8_t(*readString)(char *buf, uint8_t max_length);
+    int(*readString)(char *buf, int max_length);
     void (*writeByte)(char ch);
     void (*writeString)(const char *str);
     void (*writeLine)(const char *ln);
@@ -23,7 +28,14 @@ typedef struct {
     unsigned char (*readByte)(void);
 } Usart;
 
+Usart *applicationUsart;
+
+Usart getUsart();
+
+void setUsart(Usart *usart);
 
 
+
+void USARTInit(Usart *usart,long baudRate) ;
 
 #endif
